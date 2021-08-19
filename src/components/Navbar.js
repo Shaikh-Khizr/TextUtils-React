@@ -23,9 +23,28 @@ export default function Navbar(props) {
                             <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
                             <button className="btn btn-primary" type="submit">Search</button>
                         </form> */}
-                        <div class={`form-check form-switch text-${props.mode==='light'?'dark':'light'}`}>
-                            <input class="form-check-input" onClick={props.toggleMode} type="checkbox" id="flexSwitchCheckDefault" />
-                            <label class="form-check-label" htmlFor="flexSwitchCheckDefault">Enable DarkMode</label>
+                        <div className={`form-check text-${(props.mode === 'light') ? ('dark') : ((props.mode === 'dark') ? ('light') : ('dark'))}`}>
+                        
+                            {/* <input className="form-check-input" onClick={props.toggleMode} type="checkbox" id="flexSwitchCheckDefault" /> */}
+                            <div className="form-check">
+                                <input className="form-check-input" type="radio" name="mode" onClick={props.toggleMode}  id="exampleRadios1" value="light" defaultChecked />
+                                <label className="form-check-label" htmlFor="exampleRadios1">
+                                    Light Mode
+                                </label>
+                            </div>
+                            <div className="form-check">
+                                <input className="form-check-input" type="radio" name="mode" onClick={props.toggleMode}  id="exampleRadios2" value="dark" />
+                                <label className="form-check-label" htmlFor="exampleRadios2">
+                                    Dark Mode
+                                </label>
+                            </div>
+                            <div className="form-check">
+                                <input className="form-check-input" type="radio" name="mode" onClick={props.toggleMode}  id="exampleRadios3" value="green" />
+                                <label className="form-check-label" htmlFor="exampleRadios3">
+                                    Green Mode
+                                </label>
+                            </div>
+                            {/* <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Enable DarkMode</label> */}
                         </div>
                     </div>
                 </div>
