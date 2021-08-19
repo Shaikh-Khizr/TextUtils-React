@@ -1,15 +1,27 @@
 import React, { useState } from 'react'
 
 export default function TextForm(props) {
+    const replaceAll = (original, find, replace) => {
+        return original.replace(new RegExp(find, "gi"), replace);
+    }
+
     const handleUpClick = () => {
-        // console.log("Uppercase was clicked: " + text);
         let newText = text.toUpperCase();
         setText(newText);
     }
 
     const handleLoClick = () => {
-        // console.log("Lowercase was clicked: " + text);
         let newText = text.toLowerCase();
+        setText(newText);
+    }
+
+    const handleClearTextClick = () => {
+        let newText = '';
+        setText(newText);
+    }
+
+    const handleRemoveWHiteSpacesClick = () => {
+        let newText = replaceAll(text, " ", "");
         setText(newText);
     }
 
@@ -31,6 +43,8 @@ export default function TextForm(props) {
             </div>
             <button className="btn btn-primary mx-1" onClick={handleUpClick} >Conver to Uppercase</button>
             <button className="btn btn-primary mx-1" onClick={handleLoClick} >Conver to Lowercase</button>
+            <button className="btn btn-primary mx-1" onClick={handleClearTextClick} >Clear Text</button>
+            <button className="btn btn-primary mx-1" onClick={handleRemoveWHiteSpacesClick} >Remove White Spaces</button>
         </div>
         <div className="container my-3">
             <h2>You text summary</h2>
