@@ -1,9 +1,14 @@
 import './App.css';
-// import About from './components/About';
+import About from './components/About';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
 import React, { useState } from 'react'
 import Alert from './components/Alert';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 
 function App() {
   const [mode, setMode] = useState('light'); // Wheather dark mode is enable or not
@@ -26,14 +31,14 @@ function App() {
     //   showAlert("Dark mode has been enabled", "success");
     // }
     // else {
-      //   setMode('light');
-      //   document.body.style.backgroundColor = 'white';
-      //   showAlert("Light mode has been enabled", "success");
-      // }
-      setMode(event.target.value);
-      let currentMode = event.target.value;
-      showAlert(`${currentMode} mode has been enabled`, "success");
-      if (currentMode === 'light') {
+    //   setMode('light');
+    //   document.body.style.backgroundColor = 'white';
+    //   showAlert("Light mode has been enabled", "success");
+    // }
+    setMode(event.target.value);
+    let currentMode = event.target.value;
+    showAlert(`${currentMode} mode has been enabled`, "success");
+    if (currentMode === 'light') {
       document.body.style.backgroundColor = 'white';
       document.title = 'TextUtils - Light Mode'
     }
@@ -44,27 +49,38 @@ function App() {
     else {
       document.body.style.backgroundColor = '#19a319'
       document.title = 'TextUtils - Green Mode'
-      }
+    }
 
-      // setInterval(() => {
-      //   document.title = 'TextUtils is Amazing';
-      // }, 2000);
+    // setInterval(() => {
+    //   document.title = 'TextUtils is Amazing';
+    // }, 2000);
 
-      // setInterval(() => {
-      //   document.title = 'Install TextUtils Now';
-      // }, 1500);
+    // setInterval(() => {
+    //   document.title = 'Install TextUtils Now';
+    // }, 1500);
   }
 
   return (
     <>
-    {/* <Navbar title="TextUtils" aboutText="About Text" /> */}
-    {/* <Navbar /> */}
-    <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} />
-    <Alert alert={alert} />
-    <div className="container my-3">
-      <TextForm showAlert={showAlert} heading="Enter the text to analyze below" mode={mode} />
-      {/* <About/> */}
-    </div>
+      {/* <Navbar title="TextUtils" aboutText="About Text" /> */}
+      {/* <Navbar /> */}
+      <Router>
+        <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} />
+        <Alert alert={alert} />
+        <div className="container my-3">
+          <Switch>
+            {/* /users --> Component 1
+            /users/home --> Component 2 */}
+            <Route exact path="/about">
+              <About />
+            </Route>
+            <Route exact path="/">
+              <TextForm showAlert={showAlert} heading="Enter the text to analyze below" mode={mode} />
+            </Route>
+          </Switch>
+          {/* <About/> */}
+        </div>
+      </Router>
     </>
   );
 }

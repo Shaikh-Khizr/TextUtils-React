@@ -54,12 +54,23 @@ export default function TextForm(props) {
     if (props.mode === 'green') {
         btnColor = 'success';
     } 
+
+    const getTextAreaBgColor = (mode) => {
+        if (mode === 'dark') {
+            return 'grey';
+        } else if (mode === 'green') {
+            return '#0b5b27';
+        } else {
+            return 'white';
+        }
+    }
+    
     return (
         <>
-        <div className="container" style={{color: (props.mode === 'light') ? ('#042743') : ((props.mode === 'dark') ? ('white') : ('white'))}}>
+        <div className="container" style={{color: props.mode === 'light' ? '#042743'  : 'white'}}>
             <h1>{props.heading}</h1>
             <div className="mb-3">
-                <textarea className="form-control" value={text} onChange={handleOnChange} style={{backgroundColor: (props.mode==='dark') ? ('grey') : ((props.mode === 'green') ? ('#0b5b27') : ('white')), color: (props.mode === 'light') ? ('#042743') : ((props.mode === 'dark') ? ('white') : ('white'))}} id="myBox" rows="8"></textarea>
+                <textarea className="form-control" value={text} onChange={handleOnChange} style={{backgroundColor: getTextAreaBgColor(props.mode), color: props.mode === 'light' ? '#042743'  : 'white'}} id="myBox" rows="8"></textarea>
             </div>
             <button className={`btn btn-${btnColor} mx-1`} onClick={handleUpClick} >Conver to Uppercase</button>
             <button className={`btn btn-${btnColor} mx-1`} onClick={handleLoClick} >Conver to Lowercase</button>
@@ -68,7 +79,7 @@ export default function TextForm(props) {
             <button className={`btn btn-${btnColor} mx-1`} onClick={handleCopy} >Copy Text</button>
             <button className={`btn btn-${btnColor} mx-1`} onClick={handleExtraSpaces} >Remove Extra Spaces</button>
         </div>
-        <div className="container my-3" style={{color: (props.mode === 'light') ? ('#042743') : ((props.mode === 'dark') ? ('white') : ('white'))}}>
+        <div className="container my-3" style={{color: props.mode === 'light' ? '#042743'  : 'white'}}>
             <h2>You text summary</h2>
             <p>{text.length > 0 ? text.trim().split(" ").length : 0} words {text.length} characters</p>
             <p>{0.008 * text.split(" ").length} Minutes read</p>
