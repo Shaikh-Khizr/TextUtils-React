@@ -35,13 +35,24 @@ function App() {
       showAlert(`${currentMode} mode has been enabled`, "success");
       if (currentMode === 'light') {
       document.body.style.backgroundColor = 'white';
+      document.title = 'TextUtils - Light Mode'
     }
     else if (currentMode === 'dark') {
-        document.body.style.backgroundColor = '#042743';
+      document.body.style.backgroundColor = '#042743';
+      document.title = 'TextUtils - Dark Mode'
+    }
+    else {
+      document.body.style.backgroundColor = '#19a319'
+      document.title = 'TextUtils - Green Mode'
       }
-      else {
-        document.body.style.backgroundColor = '#19a319'
-      }
+
+      // setInterval(() => {
+      //   document.title = 'TextUtils is Amazing';
+      // }, 2000);
+
+      // setInterval(() => {
+      //   document.title = 'Install TextUtils Now';
+      // }, 1500);
   }
 
   return (
