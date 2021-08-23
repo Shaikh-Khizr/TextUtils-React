@@ -47,7 +47,7 @@ function App() {
       document.title = 'TextUtils - Dark Mode'
     }
     else {
-      document.body.style.backgroundColor = '#1d401d'
+      document.body.style.backgroundColor = '#19a319'
       document.title = 'TextUtils - Green Mode'
     }
 
