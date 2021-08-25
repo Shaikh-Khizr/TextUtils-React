@@ -25,60 +25,33 @@ function App() {
   }
 
   const toggleMode = (event) => {
-    // if (mode === 'light') {
-    //   setMode('dark');
-    //   document.body.style.backgroundColor = '#042743';
-    //   showAlert("Dark mode has been enabled", "success");
-    // }
-    // else {
-    //   setMode('light');
-    //   document.body.style.backgroundColor = 'white';
-    //   showAlert("Light mode has been enabled", "success");
-    // }
-    setMode(event.target.value);
-    let currentMode = event.target.value;
-    showAlert(`${currentMode} mode has been enabled`, "success");
-    if (currentMode === 'light') {
-      document.body.style.backgroundColor = 'white';
-      document.title = 'TextUtils - Light Mode'
-    }
-    else if (currentMode === 'dark') {
+    if (mode === 'light') {
+      setMode('dark');
       document.body.style.backgroundColor = '#042743';
-      document.title = 'TextUtils - Dark Mode'
+      showAlert("Dark mode has been enabled", "success");
     }
     else {
-      document.body.style.backgroundColor = '#1d401d'
-      document.title = 'TextUtils - Green Mode'
+      setMode('light');
+      document.body.style.backgroundColor = 'white';
+      showAlert("Light mode has been enabled", "success");
     }
 
-    // setInterval(() => {
-    //   document.title = 'TextUtils is Amazing';
-    // }, 2000);
-
-    // setInterval(() => {
-    //   document.title = 'Install TextUtils Now';
-    // }, 1500);
   }
 
   return (
     <>
-      {/* <Navbar title="TextUtils" aboutText="About Text" /> */}
-      {/* <Navbar /> */}
       <Router>
         <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} />
         <Alert alert={alert} />
         <div className="container my-3">
           <Switch>
-            {/* /users --> Component 1
-            /users/home --> Component 2 */}
             <Route exact path="/about">
-              <About />
+              <About mode={mode} />
             </Route>
             <Route exact path="/">
-              <TextForm showAlert={showAlert} heading="Enter the text to analyze below" mode={mode} />
+              <TextForm showAlert={showAlert} heading="Try TextUtils - word counter, character counter, remove extra spaces and much more" mode={mode} />
             </Route>
           </Switch>
-          {/* <About/> */}
         </div>
       </Router>
     </>

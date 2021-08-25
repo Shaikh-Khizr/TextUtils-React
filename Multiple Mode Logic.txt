@@ -1,0 +1,78 @@
+My logic:
+    Paste the below code in TextForm.js
+
+    let btnColor = 'primary';
+    if (props.mode === 'green') {
+        btnColor = 'success';
+    } 
+
+    const getTextAreaBgColor = (mode) => {
+        if (mode === 'dark') {
+            return 'rgb(19, 70, 110)';
+        } else if (mode === 'green') {
+            return '#0b5b27';
+        } else {
+            return 'white';
+        }
+    }
+
+    Paste below code in App.js toggleMode function
+    setMode(event.target.value);
+    let currentMode = event.target.value;
+    showAlert(`${currentMode} mode has been enabled`, "success");
+    if (currentMode === 'light') {
+      document.body.style.backgroundColor = 'white';
+      document.title = 'TextUtils - Light Mode'
+    }
+    else if (currentMode === 'dark') {
+      document.body.style.backgroundColor = '#042743';
+      document.title = 'TextUtils - Dark Mode'
+    }
+    else {
+      document.body.style.backgroundColor = '#1d401d'
+      document.title = 'TextUtils - Green Mode'
+    }
+
+    Paste below code in Navbar.js 
+    let navbarColor = props.mode;
+    if (navbarColor === 'green') {
+        navbarColor = 'dark';
+    }
+
+    after ul in Navbar.js
+    <div>
+        <ul className="navbar-nav mx-4">
+            <li class="nav-item dropdown">
+                <a class="nav-link active dropdown-toggle" href="#navbarDropdown" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Change Mode
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li>
+                        <div className="form-check">
+                            <input className="form-check-input mx-1" type="radio" name="mode" onClick={props.toggleMode} id="lightMode" value="light" defaultChecked />
+                            <label className="form-check-label" htmlFor="lightMode">
+                                Light Mode
+                            </label>
+                        </div>
+                    </li>
+                    <li><hr class="dropdown-divider" /></li>
+                    <li>
+                        <div className="form-check">
+                            <input className="form-check-input mx-1" type="radio" name="mode" onClick={props.toggleMode} id="darkMode" value="dark" />
+                            <label className="form-check-label" htmlFor="darkMode">
+                                Dark Mode
+                            </label>
+                        </div>
+                    </li>
+                    <li>
+                        <div className="form-check">
+                            <input className="form-check-input mx-1" type="radio" name="mode" onClick={props.toggleMode} id="greenMode" value="green" />
+                            <label className="form-check-label" htmlFor="greenMode">
+                                Green Mode
+                            </label>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
