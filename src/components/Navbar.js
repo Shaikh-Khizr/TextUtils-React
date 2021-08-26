@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
 export default function Navbar(props) {
-    
+
     return (
         <div>
-            <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
+            <nav id='myNavbar' className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
                 <div className="container-fluid">
                     <Link className="navbar-brand" to="/">{props.title}</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,10 +21,10 @@ export default function Navbar(props) {
                                 <Link className="nav-link" to="/about">{props.aboutText}</Link>
                             </li>
                         </ul>
-                        
-                        <div className={`form-check form-switch text-${props.mode === 'dark' ? 'light' : 'dark'}`}> 
+
+                        <div className={`form-check form-switch text-${props.mode === 'dark' ? 'light' : 'dark'}`}>
                             <input className="form-check-input" onClick={props.toggleMode} type="checkbox" id="changeMode" />
-                            <label className="form-check-label" htmlFor="changeMode">Enable DarkMode</label>
+                            <label className="form-check-label" htmlFor="changeMode">Toggle Mode</label>
                         </div>
                     </div>
                 </div>
